@@ -1,133 +1,31 @@
 
-\include{Preamble}
+\include{preamble}
 
-\usepackage{circuitikz}
-\usepackage{pdflscape}
-
-%The title page
-\title{EMB1 - Project 2\\ The Quadrocopter \rule{14cm}{0.5mm}}
-\author{Rolf Green -- rogre11@student.sdu.dk\\ 
-	Malthe Høj-Sunesen -- mhoej10@student.sdu.dk\\ 
-	Krzysztof Smyl -- krsmy14@student.sdu.dk\\ 
-        \rule{14cm}{0.5mm}}
-\date{Submission date: 2014-12-19}
+%\usepackage{circuitikz}
+%\usepackage{pdflscape}
 
 
 \begin{document}
 %\setlength{\parindent}{0pt} %no indent
 %
 \pagenumbering{gobble}% removes page numbers
-\maketitle %Makes the title
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{introduction/frontpage}
-\caption{The Quadrocopter}
-\label{fig:frontpage}
-\end{figure}
-\begin{center}
-Pages: \pageref{LastPage}
-\end{center}
-\newpage % Makes a new page
-\newpage
+\input{./titlepage}
+
+
+
 \pagenumbering{arabic} % Makes pages numbers and resets them to 1
 \pagestyle{fancyplain}
 \fancyhf{}
 %
-\lhead{ \fancyplain{}{Syddansk Universitet - EMB1} } % left page header
+\lhead{ \fancyplain{}{Syddansk Universitet - UAS} } % left page header
 %
 %
 \rfoot{ \fancyplain{}{Page \thepage\ of \pageref{LastPage}} }
 \begin{abstract}
-\input{abstract/abstract.tex}
+%\input{abstract/abstract.tex}
 \end{abstract}
 \newpage
 \tableofcontents
 \newpage
-%
-\section{Introduction} \label{chap:intro}
-\input{introduction/introduction.tex}
-%
-\section{Mechanical design}
-\input{mechanical/mechanical_design.tex}
-%
-\newpage
-\section{ESC - Electronic Speed Controller}
-\input{ESC/ESC-main.tex}
-\input{ESC/ESC_basic_BLDC.tex}
-\newpage
-\input{ESC/ESC_electrical_equivalent.tex}
-\input{ESC/ESC_Sensor_or_sensorless.tex}
-\input{ESC/ESC_BEMF_Sensing.tex}
-\input{ESC/ESC_Speed_control.tex}
-\subsection{Motor driver circuit}
-\input{ESC/ESC_driver_circuit.tex}
-\input{ESC/ESC_circuit_power_stage.tex}
-\input{ESC/ESC_circuit_ADC.tex}
-\input{ESC/ESC_circuit_layout.tex}
-%\subsubsection{Motor circuit conclusion}
-%\input{ESC/ESC_circuit_conclusion.tex}
-\subsection{FPGA implementation}
-\input{ESC/ESC_FPGA_control_main.tex}
-\input{ESC/ESC_VHDL_commutation_machine.tex}
-\input{ESC/ESC_VHDL_subconclusion.tex}
-%
-\clearpage
-\section{Position feedback}
-\input{gyro_acc/gyro_acc-main.tex}
-%
-\clearpage
-\section{Control algorithm}
-\label{chapter:control_algorithm}
-\input{control/control.tex}
-%
-\clearpage
-\section{Wireless management}
-\input{wireless/wireless-main.tex}
-%
-%
-\subsection{Bluetooth implementation}\label{tosnetblue}
-\label{subsec:bluetooth-implementation}
-\input{wireless/bluetooth.tex}
-%
-\subsection{$\mu$TosNet over Bluetooth}
-\label{subsec:tosnet}
-\input{wireless/tosnet.tex}
-%
-\subsection{Graphical User Interface}
-\input{wireless/gui.tex}
-%
-\subsection{Part conclusion}
-\input{wireless/conclusion.tex}
-%\subsection{Android application}
-%\input{wireless/android.tex}
-%
-\section{Electronic design}
-\input{system/electronic.tex}
-%
-%\subsection{Power supply}
-%\input{supply/supply.tex}
-%
-\clearpage
-\section{Conclusion}
-\label{sec:conclusion}
-\input{conclusion/conclusion.tex}
-%
-\subsection{Possible development}
-\input{conclusion/develop.tex}
-%
-\subsection{Robustness}
-\input{conclusion/robustness.tex}
-%
-\newpage
-%\bibliographystyle{IEEEtran}
-
-\setstretch{1}
-
-\setlength{\bibsep}{10pt}
-\bibliographystyle{IEEEtran}
-\bibliography{bibliography/bibliography}
-%
-\input{appendix/appendix.tex}
-\input{appendix/appendix_boards.tex}
 %
 \end{document}
