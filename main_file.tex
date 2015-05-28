@@ -12,7 +12,7 @@
 \input{./titlepage}
 \pagenumbering{arabic} % Makes pages numbers and resets them to 1
 \begin{abstract}
-%\input{abstract/abstract.tex}
+\input{./abstract.tex}
 \end{abstract}
 \newpage
 \tableofcontents
@@ -20,6 +20,9 @@
 \input{./introduction}
 \input{./landing_platform}
 \input{./tracking}
+\input{./automatic_control}
+\input{./discussion}
+\input{./conclusion}
 \pagestyle{fancyplain}
 \fancyhf{}
 %
@@ -27,6 +30,7 @@
 %
 %
 \rfoot{ \fancyplain{}{Page \thepage\ of \pageref{LastPage}} }
-
+\appendix
+\input{./appendix1}
 %
 \end{document}

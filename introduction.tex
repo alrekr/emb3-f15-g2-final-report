@@ -1,7 +1,7 @@
 \section{Introduction}
 \subsection{Project background and scope}
 In many applications, primarily in agriculture, an autonomous UAV which can follow a pre programmed route and return to a base to recharge like an autonomous lawn mower, is sought after. One case could be a farmer. As the legislation is now the farmer must daily inspect his animals. This prevents the use of some remote areas which is otherwise perfect for the farmer’s use; as small islands or remote field with good grass. Areas that take time, money or effort to get to in order to inspect the animals.
-Our vision is to develop a system which allows a UAV to take off, fly a pre programmed route if conditions allow flying, return to the base by GPS and the guided via GNSS/Computer Vision land to recharge on a ground base. Then the UAV will be ready for next flight the next day..
+Our vision is to develop a system which allows a UAV to take off, fly a pre programmed route if conditions allow flying, return to the base by GPS and the guided via GNSS/computer vision land to recharge on a ground base. Then the UAV will be ready for next flight the next day.
 \subsection{Problem formulation}
 The problems in this project will be to:
 
@@ -13,18 +13,14 @@ The problems in this project will be to:
 \end{itemize}
 
 \subsection{Related work}
-XX DYLAN?
-XX LASER GUIDED?
+We found a project done by Weiwei Kong, Daibing Zhang, Xun Wang, Zhiwen Xian and Jianwei Zhang, researchers at National University of Defence Technology in Changsha, China and University of Hamburg. This study used a stereo infrared setup placed on the ground which is then used to guide a UAV (multirotor or fixed wing) to land in a designated area. The idea of this is the same as ours, though for our use it does not need to be equipment this expensive. Also we do not need the flexibility they get by having a remote camera. What we need is precision and we also always have the same aircraft to guide. But in general the idea is the same, a ground based guidance system for landing. The article can be found at \url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6696776&tag=1}
 
-\subsection{Hypothesis and aim}
-HypothesisXX??
-
+\subsection{Aim}
 The group will focus on the ground base, landing system and guidance of the drone. We decided to use a IRIS-UAV which is controlled by a pixhawk and then modify the landing gear to fit our concept. We will not develop a charging system as there are already plenty of these, but we will show connectivity and thereby simulate charging.
  
 The GNSS is not expected to be precise enough for landing on the platform. It will mainly be used to guide the UAV back in the region of the landing platform. In this region a camera in the landing platform will start tracking the position of the UAV. The landing platform will then take control of the UAV (by telemetry), and start landing the drone based on the vision tracking.
-\begin{center}
+\begin{figure}
+	\centering
 	\includegraphics[width=0.8\textwidth]{imgs/introduction}
-\end{center}
-The picture above shows the basic idea of how the system could be build.
-
-Link to demo video \url{https://youtu.be/I4g7Ij-pmPY}
+	\caption{Basic idea of how the system could be build}
+\end{figure}
