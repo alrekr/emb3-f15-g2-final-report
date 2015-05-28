@@ -1,0 +1,30 @@
+\section{Introduction}
+\subsection{Project background and scope}
+In many applications, primarily in agriculture, an autonomous UAV which can follow a pre programmed route and return to a base to recharge like an autonomous lawn mower, is sought after. One case could be a farmer. As the legislation is now the farmer must daily inspect his animals. This prevents the use of some remote areas which is otherwise perfect for the farmer’s use; as small islands or remote field with good grass. Areas that take time, money or effort to get to in order to inspect the animals.
+Our vision is to develop a system which allows a UAV to take off, fly a pre programmed route if conditions allow flying, return to the base by GPS and the guided via GNSS/Computer Vision land to recharge on a ground base. Then the UAV will be ready for next flight the next day..
+\subsection{Problem formulation}
+The problems in this project will be to:
+
+\begin{itemize}
+	\item Modify Pixhawk firmware to be controlled automatically from an external computer;
+	\item Build/design/construct a landing-platform with mechanical autofit;
+	\item Design a tracking-system that outputs 3D-positions; and,
+	\item Design a program that analyze 3D-positions and outputs control-signals.
+\end{itemize}
+
+\subsection{Related work}
+XX DYLAN?
+XX LASER GUIDED?
+
+\subsection{Hypothesis and aim}
+HypothesisXX??
+
+The group will focus on the ground base, landing system and guidance of the drone. We decided to use a IRIS-UAV which is controlled by a pixhawk and then modify the landing gear to fit our concept. We will not develop a charging system as there are already plenty of these, but we will show connectivity and thereby simulate charging.
+ 
+The GNSS is not expected to be precise enough for landing on the platform. It will mainly be used to guide the UAV back in the region of the landing platform. In this region a camera in the landing platform will start tracking the position of the UAV. The landing platform will then take control of the UAV (by telemetry), and start landing the drone based on the vision tracking.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{imgs/introduction}
+\end{center}
+The picture above shows the basic idea of how the system could be build.
+
+Link to demo video \url{https://youtu.be/I4g7Ij-pmPY}
