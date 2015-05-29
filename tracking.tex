@@ -20,9 +20,11 @@ It was also decided to use OpenCV for the vision part, mainly because of previou
 For the marker tracker, Henrik Midtiby’s MarkerLocator was investigated. While the system is quite clever, it proved too difficult to make it work as needed and to interface it with ROS, so a simplified marker tracker, which only tracks a circle, was implemented. In order to be able to deduce the orientation of the UAV, object tracking was implemented as well. Besides orientation, this solution was expected to give redundancy in position and distance estimation.
 \subsection{ROS as a framework}
 Using ROS, Robot Operating System, as a framework can create confusion when lots of nodes has been implemented. Therefore a overview of the desired nodes was drawn, with short descriptions of their functionality.
-\begin{center}
+\begin{figure}[H]
+	\centering
 	\includegraphics{imgs/ros_setup}
-\end{center} 
+	\caption{Overview of the ROS nodes regarding computer vision}
+\end{figure} 
 
 \begin{center}
 	\begin{minipage}[t]{0.19\textwidth}
@@ -45,7 +47,7 @@ Using ROS, Robot Operating System, as a framework can create confusion when lots
 \subsubsection{Blob detection}
 As mentioned a marker can be used to locate the UAV. This marker were mounted on the bottom of the UAV as show in figure \vref{fig:blob_example}. 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth, trim=15cm 15cm 12cm 23cm, clip=true]{imgs/blob_example}
 	\caption{Marker on the bottom of the UAV}
@@ -107,6 +109,7 @@ First the direct distance from camera to the UAV/marker can be calculated. This 
 \begin{figure}[h!]
 	\centering
 	\includegraphics{imgs/focal_length}\\
+	\caption{Basic camera intrinsics}
 	d = distance to UAV (\si{\milli\meter})\\
 	Ximg = radius of the UAV/marker on the image (pix)\\
 	Xmm = real world radius of UAV/marker\\
@@ -125,23 +128,25 @@ Now that the distance to the UAV is known, it is possible to find the distance o
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics{imgs/focal_length_z_length}\\
+	\includegraphics{imgs/focal_length_z_length}
+	\caption{How to calculate distance (z-axis)}
+	\label{fig:focal_length_z_length}
 	a = pixelsformcenter $ \times \frac{1}{14.2}$(pix/\si{\degree})\\
 	Zaxis = $\frac{\mathrm{d}}{\cos{(a)}}$
 \end{figure}
 
-The $\frac{1}{14.2}$ factor above is the width of the image divided by the camera's view angle, giving the unit pixels/\si{\degree}. When angle a is known, the cosine-relationships can be used to calculate the distance on the z-axis. This leads us to the final step: Calculating the distance in the x- and y-plane.
+The $\frac{1}{14.2}$ factor in figure \vref{fig:focal_length_z_length} is the width of the image divided by the camera's view angle, giving the unit pixels/\si{\degree}. When angle a is known, the cosine-relationships can be used to calculate the distance on the z-axis. This leads us to the final step: Calculating the distance in the x- and y-plane.
  
 Since the distance in the z-plane is known, it is possible to rewrite and use the formulas for calculating the distance to the UAV. Replacing the distance to the UAV with the distance on the z-axis, and using the pixel distance from the center (in the x-/y-axis) instead of the marker/UAV radius gives the equations below.
 
 \begin{align}
-X\mathit{pix}&= \frac{f}{Z\mathit{mm}}\times X\mathit{mm} &\Rightarrow X\mathit{mm}=\frac{X\mathit{pix}\times Z\mathit{mm}}{f}\nonumber\\
-Y\mathit{pix}&= \frac{f}{Z\mathit{mm}}\times Y\mathit{mm} &\Rightarrow Ymm=\frac{Ypix\times Zmm}{f}\nonumber
+\mathit{Xpix}&= \frac{f}{\mathit{Zmm}}\times \mathit{Xmm} &\Rightarrow \mathit{Xmm}=\frac{\mathit{Xpix}\times \mathit{Zmm}}{f}\nonumber\\
+\mathit{Ypix}&= \frac{f}{\mathit{Zmm}}\times \mathit{Ymm} &\Rightarrow \mathit{Ymm}=\frac{\mathit{Ypix}\times \mathit{Zmm}}{f}\nonumber
 \end{align}
 \begin{center}
-	Xmm/Ymm = distance on the x- or y-axis\\
-	Xpix/Ypix = pixel distance on the x- or y-axis in the image\\
-	Zmm = distance on the z-axis (altitude)
+	$\mathit{Xmm}$/$\mathit{Ymm}$ = distance on the x- or y-axis\\
+	$\mathit{Xpix}$/$\mathit{Ypix}$ = pixel distance on the x- or y-axis in the image\\
+	$\mathit{Zmm}$ = distance on the z-axis (altitude)
 \end{center}
 \subsection{Test}
 All ROS tracking components were tested separately by use of the video streamer node, making unit testing easy. The system were also tested with the video streamer, profile detection, blob detection, and position calculator nodes running. A video demo of the full tracking system, including GUI and translated position in RobWorkStudio can be seen at \url{https://youtu.be/I4g7Ij-pmPY}.
