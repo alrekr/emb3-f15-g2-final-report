@@ -1,18 +1,12 @@
 \section{Conclusion}
-Each part of this project partially works as a separate unit. However there were no time to make the different components talk together via ROS and so the complete system was not tested together also all the components need finalizing before the system can be used in agriculture.
+Each part of this project partially works as a separate unit. However there were not enough time to make all ROS nodes communicate, and so the complete system was not tested together. All components need finalizing before the system can be used in agriculture.
 
-The concept for a landing platform developed in this project is proven. It does the job but still need some work to be complete. The aircraft is guided in place and successfully docked. However the prototype is indeed a prototype. The connector pods are too weak. The connector pads are made of aluminum foil which is fragile and not ideal in any way. Also the landing platform has to be protected against the environment somehow before it is ready for use in agriculture. 
+The concept for a landing platform developed in this project is proven. The aircraft can be guided in place and successfully docked. However the prototype is indeed a prototype. The connector pods are too weak. The connector pads are made of aluminum foil which is fragile and not ideal in any way. Also the landing platform has to be protected against the environment somehow before it is ready for use in agriculture. 
 
-Due to the brightness of the sky, the blob detection does not work well outdoors at the tested distances. As a matter of fact, it does not work at all at the tested distances. Indoors detection works much better. 
+Due to the brightness of the sky, the blob detection does not work outdoors at the tested distances. Blob detection work much better indoors; it is probable that blob detection might work at shorter distances than the tested distances. The shape detector works considerably better, with a worst case registered error rate of \SI{11}{\percent}. A better camera might be able to see the blob, allowing for all parts of the visual tracking system to work.
 
-The shape detector works considerably better, and possibly good enough for actual implementation in a finished product. A better camera might be able to see the blob, allowing for all parts of the visual tracking system to work.
+It was found that the Pixhawk module works well with both APM flight stack and Pixhawk flight stack. Problems with two software ground control stations were many, but QGroundControl works well with Ubuntu and APM Planner 2 works well with OS X. Different flight modes exist and AltHold, Auto and Land seems the best for automatic landing. The UAV and the RC-controller needs to be calibrated with a ground control station. When this is done correctly, both APM and Pixhawk flight stack showed good flight performance.
 
-It was found that that the Pixhawk module works well with both APM flight stack and Pixhawk flight stack. Problems with two software ground control stations were many, but QGroundControl works well with Ubuntu and APM Planner 2 works well with OS X.
+As the UAV is to take of by itself, weather must be taken into account. To do this METAR messages will be polled from the internet. 
 
-Different flight modes exist and AltHold, auto and land seems the best for automatic landing. The UAS and the rc-controller needs to be calibrated with a ground control station. When this is done correctly, both APM and Pixhawk flight stack showed good flight performance.
-
-As the drone is to take of by itself weather must be taken into account. To do this METAR messages will be polled from the internet. 
-
-Mavros can be used to do offboard control of the UAV. RCoverride was tested and seems as a good solution for automatic landing. More testing needs to be done and an application using RCoverride to control the UAS needs to be made.
- 
-Pseudocode for such a system is shown, but much more work needs to be put into the application in order to have something useful. Then it needs to be tuned to show good performance.
+MAVRos can be used to do offboard control of the UAV. RCoverride was tested and seems as a good solution for automatic landing. More testing needs to be done and an application using RCoverride to control the UAV needs to be made. Pseudocode for such a system is shown, but much more work needs to be put into the application in order to have something useful. 
