@@ -3,7 +3,7 @@ while( True ){
 	switch( STATE )
 	{
 	case IDLE:
-		//If the tracker can see the UAS take control
+		//If the tracker can see the UAV take control
 		if( DRONE_IN_RANGE () )
 		{
 			STATE = GUIDE;

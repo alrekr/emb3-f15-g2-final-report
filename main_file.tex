@@ -11,9 +11,18 @@
 \pagenumbering{gobble}% removes page numbers
 \input{./titlepage}
 \pagenumbering{arabic} % Makes pages numbers and resets them to 1
+%
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{University of Southern Denmark -- Introduction to UAS, Spring 2015 -- Group 2} } % left page header
+%
+%
+\rfoot{ \fancyplain{}{Page \thepage\ of \pageref{LastPage}} }
 \begin{abstract}
 \input{./abstract.tex}
 \end{abstract}
+
+
 \newpage
 \tableofcontents
 \newpage
@@ -23,14 +32,7 @@
 \input{./automatic_control}
 \input{./discussion}
 \input{./conclusion}
-\pagestyle{fancyplain}
-\fancyhf{}
-%
-\lhead{ \fancyplain{}{University of Southern Denmark -- Introduction to UAS, Spring 2015 -- Group 2} } % left page header
-%
-%
-\rfoot{ \fancyplain{}{Page \thepage\ of \pageref{LastPage}} }
-\newpage
+
 \begin{appendices}
 	\input{./appendix1}
 %	\input{./appendix2}

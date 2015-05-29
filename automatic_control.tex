@@ -11,7 +11,7 @@ The IRIS drone is equipped with a Pixhawk PX4 autopilot module, which is a \SI{6
 
 The PX4 runs a open-source Real Time Operation System (RTOS) called NuttX. On top of NuttX runs a PX4 middleware layer providing drivers and a micro object request broker (uORB) for communication between tasks.
 
-On top of the middleware layer runs a collection of tasks called the flight stack. It includes all the applications that is needed for the UAV to fly. There are two different flight stacks available for the PX4: The Pixhawk flight stack and the APM flight stack. They are developed by two different communities, but both flight stacks run on top of the PX4 middleware on NuttX. The IRIS UAV is, by default, shipped with the APM flight stack, but PX4 flight stack also has special settings for the IRIS UAS. 
+On top of the middleware layer runs a collection of tasks called the flight stack. It includes all the applications that is needed for the UAV to fly. There are two different flight stacks available for the PX4: The Pixhawk flight stack and the APM flight stack. They are developed by two different communities, but both flight stacks run on top of the PX4 middleware on NuttX. The IRIS UAV is, by default, shipped with the APM flight stack, but PX4 flight stack also has special settings for the IRIS UAV. 
 
 The PX4 dev team has developed an offboard control software station called QGroundControl. QGroundControl runs on Windows, Linux and OS X. Features includes calibration of the UAV and RC controller, flashing firmware, real-time plotting of sensor and telemetry data, logging of sensor log and waypoint navigation. 
 
@@ -183,16 +183,16 @@ To gain an as stable control as possible using the OverrideRCIn it has been chos
 The modes might come in different order as to which configuration has been chosen. In this case althold has the index "1".
 \subsubsection{Automatic Landing Program}
 
-When the UAS enters the visibility of the tracking system and the mission has been fulfilled, the Automatic landing system should take over.
+When the UAV enters the visibility of the tracking system and the mission has been fulfilled, the Automatic landing system should take over.
 The tracking system sets a boolean that the landing program can access. When the landing program takes over it uses the input from the tracking program ie. current position in x, y, z to guide the UAV towards the landing platform:
 
 \begin{enumerate}
 \item First the UAV will turn (yaw) to face along with the x-axis of the tracking program.
-\item It will then slowly guide the UAS towards the center in the x-direction until a certain threshold is met.
+\item It will then slowly guide the UAV towards the center in the x-direction until a certain threshold is met.
 \item Move slowly towards the center in the y-axis until a certain threshold is met.
 \item When the UAV is within the threshold it would start descending while continuously adjusting the position of x and y.
 \end{enumerate}
-The reason for this method is that the tracking gets continually more precise as the UAS gets closer to the camera. Hence it makes sense to first roughly find the center position in the xy-plane before descending. 
+The reason for this method is that the tracking gets continually more precise as the UAV gets closer to the camera. Hence it makes sense to first roughly find the center position in the xy-plane before descending. 
 
 \emph{\textbf{Pseudo code for automatic landing system}}
 \lstset{tabsize=4}
